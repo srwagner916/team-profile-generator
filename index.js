@@ -1,12 +1,17 @@
+//// Dependencies
+///
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 
+// array to store team data
 let teamArr = [];
 
+//// Questions
+///
+// Manager Questions
 const managerQuestions = [
-  // Manager Questions
   {
     type: 'input',
     name: 'managerName',
@@ -29,15 +34,66 @@ const managerQuestions = [
   }
 ];
 
+// Engineer Questions
+const engineerQuestions = [
+  {
+    type: 'input',
+    name: 'engineerName',
+    message: "What is your engineer's name?",
+  },
+  {
+    type: 'input',
+    name: 'engineerId',
+    message: "What is your engineer's employee ID?",
+  },
+  {
+    type: 'input',
+    name: 'engineerEmail',
+    message: "What is your engineer's email?",
+  },
+  {
+    type: 'input',
+    name: 'engineeerGithub',
+    message: "What is your engineer's GitHub username",
+  }
+];
+
+// Intern Questions
+const internQuestions = [
+  {
+    type: 'input',
+    name: 'internName',
+    message: "What is your intern's Name?"
+  },
+  {
+    type: 'input',
+    name: 'internId',
+    message: "What is your intern's ID?"
+  },
+  {
+    type: 'input',
+    name: 'internEmail',
+    message: "What is your intern's email?"
+  },
+  {
+    type: 'input',
+    name: 'internSchool',
+    message: "What is the name of your intern's school?"
+  }
+];
+
+//// Prompts
+///
+// prompt for manager
 const managerPrompt = () => {
   return inquirer.prompt(managerQuestions)
     .then(answers => {
       manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
-      console.log(manager);
       teamArr.push(manager);
   });
-}
+};
 
+// Prompt for adding another member.  Will redirect back to menu
 const anotherMember = () => {
   return inquirer.prompt([
     {
@@ -61,64 +117,27 @@ const anotherMember = () => {
   })
 };
 
+// Prompt for engineer
 const engineerPrompt = () => {
-  return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'engineerName',
-      message: "What is your engineer's name?",
-    },
-    {
-      type: 'input',
-      name: 'engineerId',
-      message: "What is your engineer's employee ID?",
-    },
-    {
-      type: 'input',
-      name: 'engineerEmail',
-      message: "What is your engineer's email?",
-    },
-    {
-      type: 'input',
-      name: 'engineeerGithub',
-      message: "What is your engineer's GitHub username",
-    }
-  ])
+  return inquirer.prompt(engineerQuestions)
     .then(answers => {
       engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineeerGithub);
       teamArr.push(engineer);
    });
 };
-            
+
+// Prompt for intern
 const internPrompt = () => {
-  return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'internName',
-      message: "What is your intern's Name?"
-    },
-    {
-      type: 'input',
-      name: 'internId',
-      message: "What is your intern's ID?"
-    },
-    {
-      type: 'input',
-      name: 'internEmail',
-      message: "What is your intern's email?"
-    },
-    {
-      type: 'input',
-      name: 'internSchool',
-      message: "What is the name of your intern's school?"
-    }
-  ])
+  return inquirer.prompt(internQuestions)
     .then(answers => {
       intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
       teamArr.push(intern);
     });
 };
 
+//// Call to managerPrompt to initialize the app
+///
+//
   managerPrompt()
     .then(anotherMember)
   
