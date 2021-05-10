@@ -28,8 +28,14 @@ test('Return the value of manager.email', () => {
   expect(manager.getEmail()).toBe('jeff@email.com');
 });
 
+test('Return the value of manager.officeNumber', () => {
+  const manager = new Manager('Jeff', 2, 'jeff@email.com', 1);
+
+  expect(manager.getOffice()).toBe(1);
+});
+
 test('Return the value of getRole()', () => {
   const manager = new Manager('Jeff', 2, 'jeff@email.com', 1);
 
   expect(manager.getRole()).toBe('Manager');
-})
+});

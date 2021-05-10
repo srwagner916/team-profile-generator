@@ -4,6 +4,8 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
+const template = require('./src/template.js');
+const fs = require('fs');
 
 // array to store team data
 let teamArr = [];
@@ -90,6 +92,7 @@ const managerPrompt = () => {
     .then(answers => {
       manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
       teamArr.push(manager);
+      return teamArr;
   });
 };
 
@@ -112,6 +115,8 @@ const anotherMember = () => {
         internPrompt().then(anotherMember);
         break;
       case 'Finish':
+        let data = template(teamArr);
+        write(data);
         break;
     }
   })
@@ -123,6 +128,7 @@ const engineerPrompt = () => {
     .then(answers => {
       engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineeerGithub);
       teamArr.push(engineer);
+      return teamArr;
    });
 };
 
@@ -132,12 +138,20 @@ const internPrompt = () => {
     .then(answers => {
       intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
       teamArr.push(intern);
+      return teamArr;
     });
 };
+
+const write = content => {
+  fs.writeFile('./dist/index.html', content, (err) => {
+    if (err) throw err;
+    console.log('file written')
+  })
+}
 
 //// Call to managerPrompt to initialize the app
 ///
 //
   managerPrompt()
     .then(anotherMember)
-  
+    
