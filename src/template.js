@@ -3,7 +3,8 @@ const Engineer = require('../lib/Engineer.js');
 const Intern = require('../lib/Intern.js');
 const Manager = require('../lib/Manager.js');
 
-
+//// Generate Manager Card
+///
 const generateManager = teamArr => {
   for(let i=0; i<teamArr.length; i++) {
     if (teamArr[i].role === 'Manager') {
@@ -25,6 +26,8 @@ const generateManager = teamArr => {
   }
 }
 
+//// Generate Engineer Card
+///
 const generateEngineer = teamArr => {
   for(let i=0; i<teamArr.length; i++) {
     if (teamArr[i].role === 'Engineer') {
@@ -45,6 +48,8 @@ const generateEngineer = teamArr => {
   }
 }
 
+//// Generate Intern Card
+///
 const generateIntern = teamArr => {
   for(let i=0; i<teamArr.length; i++) {
     if(teamArr[i].role === 'Intern') {
@@ -65,12 +70,8 @@ const generateIntern = teamArr => {
   }
 }
 
-  
-
-
-
-  
-
+//// Export page HTML
+///
 module.exports = teamArr => {
   return `
   <!DOCTYPE html>
