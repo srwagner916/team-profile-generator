@@ -16,33 +16,33 @@ const generateManager = teamArr => {
           <h3 class="text-light">${manager.getRole()}</h3>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">${manager.getId()}</li>
-          <li class="list-group-item">${manager.getEmail()}</li>
-          <li class="list-group-item">${manager.getOffice()}</li>
+          <li class="list-group-item">Employee ID: ${manager.getId()}</li>
+          <li class="list-group-item"><a href="mailto:${manager.getEmail}">Email: ${manager.getEmail()}</a></li>
+          <li class="list-group-item">Office Number: ${manager.getOffice()}</li>
         </ul>
       </div>`
-    }
+    } 
   }
 }
 
 const generateEngineer = teamArr => {
   for(let i=0; i<teamArr.length; i++) {
-  if (teamArr[i].role === 'Engineer') {
-    const engineer = new Engineer(teamArr[i].name, teamArr[i].id, teamArr[i].email, teamArr[i].github);
-    return `
-    <div class="card shadow">
-    <div class="card-header bg-dark">
-      <h3 class="text-light">${engineer.getName()}</h3><br>
-      <h3 class="text-light">${engineer.getRole()}</h3>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">${engineer.getId()}</li>
-      <li class="list-group-item">${engineer.getEmail()}</li>
-      <li class="list-group-item">${engineer.getGithub()}</li>
-    </ul>
-  </div>`
+    if (teamArr[i].role === 'Engineer') {
+      const engineer = new Engineer(teamArr[i].name, teamArr[i].id, teamArr[i].email, teamArr[i].github);
+      return `
+      <div class="card shadow">
+        <div class="card-header bg-dark">
+          <h3 class="text-light">${engineer.getName()}</h3><br>
+          <h3 class="text-light">${engineer.getRole()}</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Employee ID: ${engineer.getId()}</li>
+          <li class="list-group-item"><a href="mailto:${engineer.getEmail}">Email: ${engineer.getEmail()}</a></li>
+          <li class="list-group-item"><a href="http://github.com/${engineer.getGithub()}" target="_blank">GitHub: ${engineer.getGithub()}</a></li>
+        </ul>
+      </div>`
+    } 
   }
- }
 }
 
 const generateIntern = teamArr => {
@@ -56,12 +56,12 @@ const generateIntern = teamArr => {
           <h3 class="text-light">${intern.getRole()}</h3>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">${intern.getId()}</li>
-          <li class="list-group-item">${intern.getEmail()}</li>
-          <li class="list-group-item">${intern.getSchool()}</li>
+          <li class="list-group-item">Employee ID: ${intern.getId()}</li>
+          <li class="list-group-item"><a href="mailto:${intern.getEmail()}">Email: ${intern.getEmail()}</a></li>
+          <li class="list-group-item">School: ${intern.getSchool()}</li>
         </ul>
       </div>`
-    }
+    } 
   }
 }
 
