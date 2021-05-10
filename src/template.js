@@ -18,7 +18,7 @@ const generateManager = teamArr => {
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Employee ID: ${manager.getId()}</li>
-          <li class="list-group-item"><a href="mailto:${manager.getEmail}">Email: ${manager.getEmail()}</a></li>
+          <li class="list-group-item"><a href="mailto:${manager.getEmail()}">Email: ${manager.getEmail()}</a></li>
           <li class="list-group-item">Office Number: ${manager.getOffice()}</li>
         </ul>
       </div>`
@@ -40,7 +40,7 @@ const generateEngineer = teamArr => {
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Employee ID: ${engineer.getId()}</li>
-          <li class="list-group-item"><a href="mailto:${engineer.getEmail}">Email: ${engineer.getEmail()}</a></li>
+          <li class="list-group-item"><a href="mailto:${engineer.getEmail()}">Email: ${engineer.getEmail()}</a></li>
           <li class="list-group-item"><a href="http://github.com/${engineer.getGithub()}" target="_blank">GitHub: ${engineer.getGithub()}</a></li>
         </ul>
       </div>`
